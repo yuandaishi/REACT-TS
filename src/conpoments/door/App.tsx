@@ -2,8 +2,9 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {Button,Table} from 'antd';
+import {BrowserRouter,Router,Route,Link} from 'react-router-dom';
 
-const App: React.FC = () => {
+const Door: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
@@ -19,10 +20,16 @@ const App: React.FC = () => {
         >
           Learn React
         </a>
-        <Button type="default">示例页面</Button>
+        <Button type="default">
+          {/* <BrowserRouter> */}
+          {/* 外层已经有了BrowserRouter，这里在加上，页面会出现不跳转的bug */}
+            {/* link不能单独存在，必须配合router */}
+            <Link to={'/content'}>示例页面</Link>
+          {/* </BrowserRouter> */}
+        </Button>
       </header>
     </div>
   );
 }
 
-export default App;
+export default Door;
