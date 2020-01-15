@@ -1,0 +1,53 @@
+interface MenuList{
+    url?:String
+    des:String
+    icon?:String
+    key:String
+    children?:Array<MenuList>
+}
+
+const menuData:Array<MenuList>=[
+    {
+       url:'fruits',
+       des:'水果',
+       icon:'user',
+       key:'001',
+    },
+    {
+        url:'livestock',
+        des:'牲畜',
+        icon:'laptop',
+        key:'002',
+        children:[
+            {
+                url:'pig',
+                des:'猪',
+                icon:'upload',
+                key:'002001',
+            }
+        ]
+     },
+     {
+        url:'furniture',
+        des:'家具',
+        icon:'notification',
+        key:'003',
+        children:[
+            {
+                url:'desk',
+                des:'桌子',
+                icon:'bar-chart',
+                key:'003001',
+                children:[
+                    {
+                        url:'SquareDesk',
+                        des:'方桌',
+                        icon:'cloud-o',
+                        key:'003001001',
+                    }
+                ]
+            }
+        ]
+     }
+]
+export default menuData
