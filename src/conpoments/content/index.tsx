@@ -17,10 +17,11 @@ const Index:React.FC=()=>{
     const { SubMenu,Item } = Menu;
     const { Header, Content, Footer, Sider } = Layout;
     const menuList=(menuData:Array<MenuList>)=>{
-        return menuData.map((value,key)=>{
+        return menuData.map((value,key)=>{//要返回 
           if(!value.children){
             return(
               <Item key={value.key}>
+                {/* Link最后会渲染成a标签，所以要用别的标签来包含Link，而不能用Link包含别的标签 */}
                 <Link to={value.url||''}><Icon type={value.icon} />{value.des}</Link>
               </Item>
             )
