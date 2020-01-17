@@ -1,8 +1,8 @@
 interface MenuList{
-    url?:String
-    des:String
-    icon?:String
-    key:String
+    url?:string
+    des:string
+    icon?:string
+    key:string
     children?:Array<MenuList>
 }
 
@@ -24,6 +24,12 @@ const menuData:Array<MenuList>=[
                 des:'猪',
                 icon:'upload',
                 key:'002001',
+            },
+            {
+                url:'cow',
+                des:'牛',
+                icon:'appstore',
+                key:'002002',
             }
         ]
      },

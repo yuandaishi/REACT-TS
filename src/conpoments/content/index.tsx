@@ -1,21 +1,51 @@
 import React from 'react';
-import {BrowserRouter,Switch,Route} from 'react-router-dom';
+import {BrowserRouter,Switch,Route,Link} from 'react-router-dom';
 import Fruits from './fruits/Index';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import './index.css';
+import menuData from './menuData';
+
+interface MenuList{
+  url?:string
+  des:string
+  icon?:string
+  key:string
+  children?:Array<MenuList>
+}
 
 const Index:React.FC=()=>{
-    const { SubMenu } = Menu;
+    const { SubMenu,Item } = Menu;
     const { Header, Content, Footer, Sider } = Layout;
+    const menuList=(menuData:Array<MenuList>)=>{
+        return menuData.map((value,key)=>{
+          if(!value.children){
+            return(
+              <Item key={value.key}>
+                <Link to={value.url||''}><Icon type={value.icon} />{value.des}</Link>
+              </Item>
+            )
+          }else{
+            return(
+              <SubMenu
+                key={value.key}
+                title={
+                  <span>
+                    <Icon type={value.icon} />
+                    <span>{value.des}</span>
+                  </span>
+                }
+              >
+                {menuList(value.children)}
+              </SubMenu>
+            )
+          }
+        })
+    }
     return(
-        // <div>
-        //     这是一个示例页面
-        //     <Switch>
-        //         <Route exact path='/content' component={Fruits} />
-        //     </Switch>
-        // </div>
         <Layout>
         <Header className="header">
           <div className="logo" />
+          <div className='message'>这是里头部的一些信息</div>
         </Header>
         <Content style={{ padding: '0 50px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
@@ -31,51 +61,12 @@ const Index:React.FC=()=>{
                 defaultOpenKeys={['sub1']}
                 style={{ height: '100%' }}
               >
-                <SubMenu
-                  key="sub1"
-                  title={
-                    <span>
-                      <Icon type="user" />
-                      subnav 1
-                    </span>
-                  }
-                >
-                  <Menu.Item key="1">option1</Menu.Item>
-                  <Menu.Item key="2">option2</Menu.Item>
-                  <Menu.Item key="3">option3</Menu.Item>
-                  <Menu.Item key="4">option4</Menu.Item>
-                </SubMenu>
-                <SubMenu
-                  key="sub2"
-                  title={
-                    <span>
-                      <Icon type="laptop" />
-                      subnav 2
-                    </span>
-                  }
-                >
-                  <Menu.Item key="5">option5</Menu.Item>
-                  <Menu.Item key="6">option6</Menu.Item>
-                  <Menu.Item key="7">option7</Menu.Item>
-                  <Menu.Item key="8">option8</Menu.Item>
-                </SubMenu>
-                <SubMenu
-                  key="sub3"
-                  title={
-                    <span>
-                      <Icon type="notification" />
-                      subnav 3
-                    </span>
-                  }
-                >
-                  <Menu.Item key="9">option9</Menu.Item>
-                  <Menu.Item key="10">option10</Menu.Item>
-                  <Menu.Item key="11">option11</Menu.Item>
-                  <Menu.Item key="12">option12</Menu.Item>
-                </SubMenu>
+                {menuList(menuData)}
               </Menu>
             </Sider>
-            <Content style={{ padding: '0 24px', minHeight: 280 }}>Content</Content>
+            <Content style={{ padding: '0 24px', minHeight: 280 }}>
+              <div>公共部分</div>
+            </Content>
           </Layout>
         </Content>
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
