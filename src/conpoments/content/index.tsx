@@ -1,9 +1,10 @@
 import React from 'react';
 import {BrowserRouter,Switch,Route,Link} from 'react-router-dom';
-import Fruits from './fruits/Index';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import './index.css';
 import menuData from './menuData';
+import Banana from './fruits/banana/Index';
+import Public from './public';
 
 interface MenuList{
   url?:string
@@ -65,8 +66,12 @@ const Index:React.FC=()=>{
                 {menuList(menuData)}
               </Menu>
             </Sider>
-            <Content style={{ padding: '0 24px', minHeight: 280 }}>
-              <div>公共部分</div>
+            <Content style={{ padding: '0 24px', minHeight: 280 }} className='content'>
+              <Route path={'/content/public'} component={Public} />
+              <Switch>
+                {/* 公共部分 */}
+                <Route exact path={'/content/public/banana'} component={Banana} />
+              </Switch>
             </Content>
           </Layout>
         </Content>

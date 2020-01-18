@@ -8,7 +8,7 @@ const App:React.FC=()=>{
         <BrowserRouter>
             <Switch>
                 <Route exact path='/' component={Door} />
-                <Route exact path='/content' component={Content} />
+                <Route path='/content' component={Content} />
             </Switch>
         </BrowserRouter>
     )

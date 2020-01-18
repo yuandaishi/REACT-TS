@@ -8,25 +8,39 @@ interface MenuList{
 
 const menuData:Array<MenuList>=[
     {
-       url:'fruits',
+       url:'/content/public/fruits',
        des:'水果',
        icon:'user',
        key:'001',
+       children:[
+           {
+            url:'/content/public/banana',
+            des:'香蕉',
+            icon:'shake',
+            key:'0010001',
+           },
+           {
+            url:'/content/public/apple',
+            des:'苹果',
+            icon:'table',
+            key:'0010002',
+           }
+       ]
     },
     {
-        url:'livestock',
+        url:'/content/public/livestock',
         des:'牲畜',
         icon:'laptop',
         key:'002',
         children:[
             {
-                url:'pig',
+                url:'/content/public/pig',
                 des:'猪',
                 icon:'upload',
                 key:'002001',
             },
             {
-                url:'cow',
+                url:'/content/public/cow',
                 des:'牛',
                 icon:'appstore',
                 key:'002002',
@@ -34,19 +48,19 @@ const menuData:Array<MenuList>=[
         ]
      },
      {
-        url:'furniture',
+        url:'/content/public/furniture',
         des:'家具',
-        icon:'notification',
+        icon:'gift',
         key:'003',
         children:[
             {
-                url:'desk',
+                url:'/content/public/desk',
                 des:'桌子',
                 icon:'bar-chart',
                 key:'003001',
                 children:[
                     {
-                        url:'SquareDesk',
+                        url:'/content/public/SquareDesk',
                         des:'方桌',
                         icon:'cloud-o',
                         key:'003001001',
