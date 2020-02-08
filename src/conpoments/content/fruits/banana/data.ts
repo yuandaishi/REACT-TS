@@ -36,7 +36,7 @@ const Data:Array<T>=[
 
 const Columns:Array<T2>=[
     {
-        title:'品名',
+        title:'产品名称',
         dataIndex:'name',
         index:'name'
     },

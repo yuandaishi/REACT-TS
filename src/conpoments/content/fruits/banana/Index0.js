@@ -3,7 +3,7 @@ import {Table,Button} from 'antd'
 import {Data,Columns} from './data';
 import KindModal from '../../../publicConpoments/kindModal'
 
-const Banana:React.FC=()=>{
+const Banana=()=>{
     const {useState,useEffect}=React;
     const [visible, setVisible] = useState(false);
 
@@ -16,9 +16,9 @@ const Banana:React.FC=()=>{
             >
             </Table>
             <KindModal
+                // JS可以引用TSX编写的组件（肯定的，antd等很多组件都是用TSX编写的），但是JS这里不会进行校验，所以可能有些必须属性我们没有填写
                 visible={visible}
                 setVisible={setVisible}
-                width={800}
             />
         </div>
     )

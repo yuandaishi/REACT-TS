@@ -3,6 +3,7 @@ import {BrowserRouter,Switch,Route,Link} from 'react-router-dom';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import './index.css';
 import menuData from './menuData';
+// import Banana from './fruits/banana/Index.js';
 import Banana from './fruits/banana/Index';
 import Public from './public';
 
